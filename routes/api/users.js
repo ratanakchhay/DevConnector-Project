@@ -9,7 +9,7 @@ const config = require('config')
 // Getting the user
 const User = require('../../models/User')
 
-// @route    GET api/users
+// @route    POST api/users
 // @desc     Register user
 // @access   Public
 router.post(
@@ -76,8 +76,6 @@ router.post(
             console.error(err.message)
             res.status(500).send('Server Error')
         }
-
-
     })
 
 module.exports = router
