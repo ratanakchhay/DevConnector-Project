@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://ratanakchhay03_db_user:ratanakchhay03_db_user@devconnector.4dsiakg.mongodb.net/"
+    "mongoURI": "mongodb+srv://ratanakchhay03_db_user:ratanakchhay03_db_user@devconnector.4dsiakg.mongodb.net/",
+    "jwtSecret": "mysecrettoken"
 }
