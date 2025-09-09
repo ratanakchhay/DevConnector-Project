@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+/* This code snippet is defining a Mongoose schema for a user in a Node.js application. The schema
+includes the following fields for a user: */
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
