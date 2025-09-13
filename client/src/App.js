@@ -1,11 +1,15 @@
-import './App.css';
+import React from 'react'
+import './App.css'
+import Landing from './components/layout/Landing'
+import Navbar from './components/layout/Navbar'
 
 function App() {
   return (
     <>
-      Hello World
+      <Navbar />
+      <Landing />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
