@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Landing from './components/layout/Landing'
@@ -12,20 +12,17 @@ import store from './store'
 import Alert from './components/layout/Alert'
 
 function App() {
+  const [styleName, setStyleName] = React.useState("container")
+  
   return (
     <Provider store = {store}>
       <BrowserRouter>
-      <Navbar />
-          <Routes>
-            <Route path = "/" element = {<Landing />} />
-          </Routes>
-          <section className = 'container'>
-            <Alert />
+        <Navbar />
             <Routes>
-              <Route path = "/login" element = {<Login />} />
-              <Route path = "/register" element = {<Register />} />
+              <Route path = "/" element = {<Landing />} />
+              <Route path = "/login" element = {<section className = 'container'><Alert /><Login /></section>} />
+              <Route path = "/register" element = {<section className = 'container'><Alert /><Register /></section>} />
             </Routes>
-          </section>
       </BrowserRouter>
     </Provider>
   )
