@@ -5,6 +5,7 @@ import Landing from './components/layout/Landing'
 import Navbar from './components/layout/Navbar'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import Dashboard from './components/dashboard/Dashboard'
 
 // Redux imports
 import { Provider } from 'react-redux'
@@ -30,6 +31,7 @@ function App() {
               <Route path = "/" element = {<Landing />} />
               <Route path = "/login" element = {<section className = 'container'><Alert /><Login /></section>} />
               <Route path = "/register" element = {<section className = 'container'><Alert /><Register /></section>} />
+              <Route path = '/dashboard' element = {<section className='container'><Dashboard /></section>} />
             </Routes>
       </BrowserRouter>
     </Provider>
