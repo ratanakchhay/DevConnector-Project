@@ -42,13 +42,13 @@ router.post(
             // See if the user exists
             let user = await User.findOne({ email })
             if (!user) {
-                return res.status(400).json({ erros: [{ msg: 'Invalid Credentials'}] })
+                return res.status(400).json({ errors: [{ msg: 'Invalid Credentials'}] })
             }
 
             // Checks whether password matches
             const isMatch = await bcrypt.compare(password, user.password)
             if (!isMatch) {
-                return res.status(400).json({ erros: [{ msg: 'Invalid Credentials'}] })
+                return res.status(400).json({ errors: [{ msg: 'Invalid Credentials'}] })
             }
     
             // Return JWT
