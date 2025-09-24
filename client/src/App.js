@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Dashboard from './components/dashboard/Dashboard'
+import CreateProfile from './components/profile-form/CreateProfile'
 
 // Redux imports
 import { Provider } from 'react-redux'
@@ -32,6 +33,7 @@ function App() {
               <Route path = "/login" element = {<section className = 'container'><Alert /><Login /></section>} />
               <Route path = "/register" element = {<section className = 'container'><Alert /><Register /></section>} />
               <Route path = '/dashboard' element = {<section className='container'><Dashboard /></section>} />
+              <Route path = "/create-profile" element = {<CreateProfile />} />
             </Routes>
       </BrowserRouter>
     </Provider>
