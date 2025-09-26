@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { createProfile } from '../../actions/profile'
 
-function CreateProfile (props) {
+function CreateProfile ({ createProfile, error }) {
     const [formData, setFormData] = React.useState({
         company: '',
         website: '',
@@ -19,6 +20,8 @@ function CreateProfile (props) {
         linkedin: '',
         instagram: ''
     })
+
+    const navigate = useNavigate()
 
     const [displaySocialInputs, toggleSocialInputs] = React.useState(false)
 
@@ -37,10 +40,17 @@ function CreateProfile (props) {
         const instagram = form.get('instagram') || ""
 
         setFormData({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram })
+        createProfile({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram })
+
+        console.log(error)
+        
+        if (!error) {
+            navigate(-1)
+        }
     }
 
     return (
-        <div className = 'container'>
+        <>
             <h1 className="large text-primary">
                 Create Your Profile
             </h1>
@@ -85,7 +95,7 @@ function CreateProfile (props) {
                 >
                 </div>
                 <div className="form-group">
-                <input type="text" placeholder="* Skills" name="skills" required />
+                <input type="text" placeholder="* Skills" name="skills" />
                 <small className="form-text"
                     >Please use comma separated values (eg.
                     HTML,CSS,JavaScript,PHP)</small
@@ -145,12 +155,17 @@ function CreateProfile (props) {
                 <input type="submit" className="btn btn-primary my-1" />
                 <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
             </form>
-        </div>
+        </>
     )
 }
 
 CreateProfile.propTypes = {
-
+    createProfile: PropTypes.func.isRequired,
+    error: PropTypes.object.isRequired,
 }
 
-export default connect()(CreateProfile)
+const mapStateToProps = state => ({
+    error: state.profile.error
+})
+
+export default connect(mapStateToProps, { createProfile })(CreateProfile)

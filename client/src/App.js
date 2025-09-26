@@ -33,7 +33,7 @@ function App() {
               <Route path = "/login" element = {<section className = 'container'><Alert /><Login /></section>} />
               <Route path = "/register" element = {<section className = 'container'><Alert /><Register /></section>} />
               <Route path = '/dashboard' element = {<section className='container'><Dashboard /></section>} />
-              <Route path = "/create-profile" element = {<CreateProfile />} />
+              <Route path = "/create-profile" element = {<section className='container'><Alert /><CreateProfile /></section>} />
             </Routes>
       </BrowserRouter>
     </Provider>
