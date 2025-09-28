@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Navigate, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getCurrentProfile } from '../../actions/profile'
+import DashboardActions from './DashboardActions'
 
 function Dashboard ({ isAuthenticated, loading, getCurrentProfile, profile, auth }) {
     React.useEffect(() => {
@@ -20,7 +21,7 @@ function Dashboard ({ isAuthenticated, loading, getCurrentProfile, profile, auth
                     <h1 className="large text-primary">Dashboard</h1>
                     <p className="lead"><i className="fas fa-user"></i> Welcome, { auth.user && auth.user.name }!</p>
                     { profile.profile !== null ? 
-                        <>has</> : 
+                        <DashboardActions /> : 
                         <>
                             <p>You have not yet setup a profile, please add some info.</p>
                             <Link to = '/create-profile' className = 'btn btn-primary my-1'>
