@@ -68,9 +68,10 @@ function EditProfile ({ createProfile, error, profile, getCurrentProfile }) {
         const instagram = form.get('instagram') || ""
 
         setFormData({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram })
-        createProfile({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram }, true)
         
-        if (!error) {
+        createProfile({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram }, true)
+
+        if (!error && status !== "" && skills !== "") {
             navigate(-1)
         }
     }
