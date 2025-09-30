@@ -31,8 +31,8 @@ function AddExperience ({ addExperience, error }) {
         setFormData({ company, title, location, from, to, current, description })
         addExperience({ company, title, location, from, to, current, description })
         
-        if (!error && title !== "" && company !== "" && from !== "") {
-            navigate(-1)
+        if (error != {} && title !== "" && company !== "" && from !== "") {
+            navigate('/dashboard')
         }
     }
 
@@ -54,20 +54,20 @@ function AddExperience ({ addExperience, error }) {
             <small>* = required field</small>
             <form className="form" action = {handleSubmit}>
                 <div className="form-group">
-                <input type="text" placeholder="* Job Title" name="title" value = {formData.title} onChange = {e => handleChange(e)}/>
+                <input type="text" placeholder="* Job Title" name="title" value = {formData.title} onChange = {e => handleChange(e)} required/>
                 </div>
 
                 <div className="form-group">
-                <input type="text" placeholder="* Company" name="company" value = {formData.company} onChange = {e => handleChange(e)}/>
+                <input type="text" placeholder="* Company" name="company" value = {formData.company} onChange = {e => handleChange(e)} required/>
                 </div>
 
                 <div className="form-group">
-                <input type="text" placeholder="Location" name="location" value = {formData.location} onChange = {e => handleChange(e)}/>
+                <input type="text" placeholder="Location" name="location" value = {formData.location} onChange = {e => handleChange(e)} required/>
                 </div>
 
                 <div className="form-group">
                 <h4>From Date</h4>
-                <input type="date" name="from" />
+                <input type="date" name="from" required/>
                 </div>
 
                 <div className="form-group">

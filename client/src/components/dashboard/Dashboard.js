@@ -25,8 +25,8 @@ function Dashboard ({ isAuthenticated, loading, getCurrentProfile, profile, auth
                     { profile.profile !== null ? 
                         <>
                             <DashboardActions />
-                            <Experience experience = {profile.profile.experience} />
-                            <Education education = {profile.profile.education} />
+                            {(profile.profile.experience.length !== 0) ? <Experience experience = {profile.profile.experience} /> : <></>}
+                            {(profile.profile.education.length !== 0) ? <Education education = {profile.profile.education} /> : <></> }
                         </> : 
                         <>
                             <p>You have not yet setup a profile, please add some info.</p>
