@@ -209,8 +209,8 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
 
 /* Handling Education */
 
-// @route    PUT api/profile/experience
-// @desc     Add profile experience
+// @route    PUT api/profile/education
+// @desc     Add profile education
 // @access   Private
 router.put('/education', 
     [
@@ -233,7 +233,7 @@ router.put('/education',
 
         try {
             const profile = await Profile.findOne({ user: req.user.id })
-            profile.experience.unshift(newEdu)
+            profile.education.unshift(newEdu)
 
             await profile.save()
             res.json(profile)
@@ -244,16 +244,16 @@ router.put('/education',
     }
 )
 
-// @route    DELETE api/profile/experience/:exp_id
-// @desc     Delete experience from profile
+// @route    DELETE api/profile/education/:exp_id
+// @desc     Delete education from profile
 // @access   Private
 router.delete('/education/:edu_id', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id })
         
         // Get remove index
-        const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.edu_id)
-        profile.experience.splice(removeIndex, 1)
+        const removeIndex = profile.education.map(item => item.id).indexOf(req.params.edu_id)
+        profile.education.splice(removeIndex, 1)
         
         await profile.save()
         res.json(profile)

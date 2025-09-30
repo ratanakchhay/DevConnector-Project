@@ -36,6 +36,14 @@ function AddExperience ({ addExperience, error }) {
         }
     }
 
+    const handleChange = (e) => {
+        e.preventDefault()
+        setFormData({
+            ...formData,
+            [e.target.name] : e.target.value
+        })
+    }
+
     return (
         <>
             <h1 className="large text-primary">Add An Experience</h1>
@@ -46,15 +54,15 @@ function AddExperience ({ addExperience, error }) {
             <small>* = required field</small>
             <form className="form" action = {handleSubmit}>
                 <div className="form-group">
-                <input type="text" placeholder="* Job Title" name="title" />
+                <input type="text" placeholder="* Job Title" name="title" value = {formData.title} onChange = {e => handleChange(e)}/>
                 </div>
 
                 <div className="form-group">
-                <input type="text" placeholder="* Company" name="company" />
+                <input type="text" placeholder="* Company" name="company" value = {formData.company} onChange = {e => handleChange(e)}/>
                 </div>
 
                 <div className="form-group">
-                <input type="text" placeholder="Location" name="location" />
+                <input type="text" placeholder="Location" name="location" value = {formData.location} onChange = {e => handleChange(e)}/>
                 </div>
 
                 <div className="form-group">
@@ -68,13 +76,10 @@ function AddExperience ({ addExperience, error }) {
                 }/> Current Job</p>
                 </div>
 
-                {!toDateDisabled ? 
-                    (<div className="form-group">
+                <div className="form-group">
                     <h4>To Date</h4>
-                    <input type="date" name="to" />
-                    </div>) : 
-                    (<></>)
-                }
+                    <input type="date" name="to" value = {formData.to} onChange = {e => handleChange(e)} disabled = {toDateDisabled ? 'disabled' : ''}/>
+                </div>
 
                 <div className="form-group">
                 <textarea
