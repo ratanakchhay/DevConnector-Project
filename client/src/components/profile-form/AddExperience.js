@@ -31,7 +31,7 @@ function AddExperience ({ addExperience, error }) {
         setFormData({ company, title, location, from, to, current, description })
         addExperience({ company, title, location, from, to, current, description })
         
-        if (!error) {
+        if (!error && title !== "" && company !== "" && from !== "") {
             navigate(-1)
         }
     }

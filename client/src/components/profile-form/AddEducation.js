@@ -33,7 +33,7 @@ function AddEducation ({ addEducation, error }) {
         setFormData({ school, degree, fieldofstudy, from, to, current, description })
         addEducation({ school, degree, fieldofstudy, from, to, current, description })
         
-        if (!error) {
+        if (!error && school !== "" && degree !== "" && fieldofstudy !== "" && from !== "") {
             navigate(-1)
         }
     }
@@ -78,7 +78,7 @@ function AddEducation ({ addEducation, error }) {
                 </div>
 
                 <div className="form-group">
-                    <input type="text" placeholder="Field Of Study" name="fieldofstudy" value = {formData.fieldofstudy} onChange = {e => handleChange(e)}/>
+                    <input type="text" placeholder="* Field Of Study" name="fieldofstudy" value = {formData.fieldofstudy} onChange = {e => handleChange(e)}/>
                 </div>
 
                 <div className="form-group">
