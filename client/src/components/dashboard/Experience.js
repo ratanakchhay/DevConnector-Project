@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import dayjs from 'dayjs'
+import { deleteExperience } from '../../actions/profile'
 
-function Experience ({ experience }) {
+function Experience ({ experience, deleteExperience }) {
     const formatDate = (startDate, endDate) => {
         const start = dayjs(startDate)
         const end = dayjs(endDate)
@@ -35,7 +36,7 @@ function Experience ({ experience }) {
                 {formatDate(dayjs(exp.from), (!exp.to ? dayjs() : dayjs(exp.to))).years} years, {formatDate(dayjs(exp.from), (!exp.to ? dayjs() : dayjs(exp.to))).months} months, {formatDate(dayjs(exp.from), (!exp.to ? dayjs() : dayjs(exp.to))).days} days
             </td>
             <td>
-                <button className = 'btn btn-danger'>Delete</button>
+                <button className = 'btn btn-danger' onClick = {() => deleteExperience(exp._id)}>Delete</button>
             </td>
         </tr>
     ))
@@ -62,6 +63,7 @@ function Experience ({ experience }) {
 
 Experience.propTypes = {
     experience: PropTypes.array.isRequired,
+    deleteExperience: PropTypes.func.isRequired,
 }
 
-export default connect()(Experience)
+export default connect(null, { deleteExperience })(Experience)

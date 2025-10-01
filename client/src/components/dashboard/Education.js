@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import dayjs from 'dayjs'
+import { deleteEducation } from '../../actions/profile'
 
-function Education ({ education }) {
+function Education ({ education, deleteEducation }) {
     const formatDate = (startDate, endDate) => {
         const start = dayjs(startDate)
         const end = dayjs(endDate)
@@ -35,7 +36,7 @@ function Education ({ education }) {
                 {formatDate(dayjs(edu.from), (!edu.to ? dayjs() : dayjs(edu.to))).years} years, {formatDate(dayjs(edu.from), (!edu.to ? dayjs() : dayjs(edu.to))).months} months, {formatDate(dayjs(edu.from), (!edu.to ? dayjs() : dayjs(edu.to))).days} days
             </td>
             <td>
-                <button className = 'btn btn-danger'>Delete</button>
+                <button className = 'btn btn-danger' onClick = {() => deleteEducation(edu._id)}>Delete</button>
             </td>
         </tr>
     ))
@@ -62,6 +63,7 @@ function Education ({ education }) {
 
 Education.propTypes = {
     education: PropTypes.array.isRequired,
+    deleteEducation: PropTypes.func.isRequired,
 }
 
-export default connect()(Education)
+export default connect(null, { deleteEducation })(Education)
