@@ -8,7 +8,7 @@ A full-stack JavaScript web application that allows users to connect with others
 🔔 Real-time community feed  
 
 ## Tech Stack 🛠️  
-ReactJS, ExpressJS, JWT, MongoDB Atlas, NodeJS, TailwindCSS  
+ReactJS, ExpressJS, JWT, MongoDB Atlas, NodeJS
 
 ## Usage 🖥️
 Sign up with a new account, log in to access your profile and the community feed, post your achievements and connect with others, like and comment on posts to engage with the community, and enjoy celebrating milestones with your peers!
