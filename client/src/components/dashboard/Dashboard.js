@@ -22,25 +22,26 @@ function Dashboard ({ isAuthenticated, loading, getCurrentProfile, profile, auth
                 <>
                     <h1 className="large text-primary">Dashboard</h1>
                     <p className="lead"><i className="fas fa-user"></i> Welcome, { auth.user && auth.user.name }!</p>
-                    { profile.profile !== null ? 
-                        <>
-                            <DashboardActions />
-                            {(profile.profile.experience.length !== 0) ? <Experience experience = {profile.profile.experience} /> : <></>}
-                            {(profile.profile.education.length !== 0) ? <Education education = {profile.profile.education} /> : <></> }
-
-                            <div className = "my-2">
-                                <button className = "btn btn-danger" onClick = {() => deleteAccount()}>
-                                    <i className='fas fa-user-minus'></i> Delete My Account
-                                </button>
-                            </div>
-                        </> : 
-                        <>
-                            <p>You have not yet setup a profile, please add some info.</p>
-                            <Link to = '/create-profile' className = 'btn btn-primary my-1'>
-                                Create Profile
-                            </Link>
-                        </>
-                    }
+                    <>
+                        { profile.profile !== null ? 
+                            <>
+                                <DashboardActions />
+                                {(profile.profile.experience.length !== 0) ? <Experience experience = {profile.profile.experience} /> : <></>}
+                                {(profile.profile.education.length !== 0) ? <Education education = {profile.profile.education} /> : <></> } 
+                            </> : 
+                            <>
+                                <p>You have not yet setup a profile, please add some info.</p>
+                                <Link to = '/create-profile' className = 'btn btn-primary my-1'>
+                                    Create Profile
+                                </Link>
+                            </>     
+                        }
+                        <div className = "my-2">
+                            <button className = "btn btn-danger" onClick = {() => deleteAccount()}>
+                                <i className='fas fa-user-minus'></i> Delete My Account
+                            </button>
+                        </div>
+                    </>
                 </>
 }
 
