@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getPosts } from '../../actions/post'
 import PostItem from './PostItem'
 import Spinner from '../layout/Spinner'
+import PostForm from './PostForm'
 
 function Posts ({ getPosts, post: { posts, loading }, auth: { isAuthenticated } }) {
     React.useEffect(() => {
@@ -12,7 +13,7 @@ function Posts ({ getPosts, post: { posts, loading }, auth: { isAuthenticated } 
             getPosts()
         }
     }, [getPosts, isAuthenticated])
-
+    
     if (!isAuthenticated) {
         return <Navigate to = '/dashboard' />
     }
@@ -25,6 +26,7 @@ function Posts ({ getPosts, post: { posts, loading }, auth: { isAuthenticated } 
                 <p className='lead'>
                     <i className='fas fa-user'></i> Welcome to the community
                 </p>
+                <PostForm />
                 <div className='posts'>
                     {posts.map(post => (
                         <PostItem key = {post._id} post = {post} />

@@ -9,7 +9,7 @@ function PostItem ({ post: { _id, text, name, avatar, user, likes, comments, dat
     return (
         <div className="post bg-white p-1 my-1">
             <div>
-                <Link to="/dashboard">
+                <Link to={`/profile/${user}`}>
                 <img
                     className="round-img"
                     src= {avatar}
