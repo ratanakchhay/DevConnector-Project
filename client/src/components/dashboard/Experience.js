@@ -5,35 +5,12 @@ import dayjs from 'dayjs'
 import { deleteExperience } from '../../actions/profile'
 
 function Experience ({ experience, deleteExperience }) {
-    const formatDate = (startDate, endDate) => {
-        const start = dayjs(startDate)
-        const end = dayjs(endDate)
-        
-
-        let years = end.diff(start, 'year')
-        let remainingDate = start.add(years, 'year')
-        if(start.add(years, 'year').isAfter(end)){
-            years--
-            remainingDate = start.add(years, 'year')
-        }
-
-        let months = end.diff(remainingDate, 'month')
-        let remainingDateAfterMonths = remainingDate.add(months, 'month')
-        if(start.add(months, 'month').isAfter(end)){
-            months--
-            remainingDateAfterMonths = remainingDate.add(months, 'month')
-        }
-
-        const days = end.diff(remainingDateAfterMonths, 'day')
-        return { years, months, days }
-    }
-
     const experiences = experience.map(exp => (
         <tr key = {exp._id}>
             <td>{exp.company}</td>
             <td className='hide-sm'>{exp.title}</td>
             <td className='hide-sm'>
-                {formatDate(dayjs(exp.from), (!exp.to ? dayjs() : dayjs(exp.to))).years} years, {formatDate(dayjs(exp.from), (!exp.to ? dayjs() : dayjs(exp.to))).months} months, {formatDate(dayjs(exp.from), (!exp.to ? dayjs() : dayjs(exp.to))).days} days
+                {dayjs(exp.from).format('MM/DD/YYYY')} - {exp.to ? dayjs(exp.to).format('MM/DD/YYYY') : <>Present</>}
             </td>
             <td>
                 <button className = 'btn btn-danger' onClick = {() => deleteExperience(exp._id)}>Delete</button>

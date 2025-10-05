@@ -5,35 +5,12 @@ import dayjs from 'dayjs'
 import { deleteEducation } from '../../actions/profile'
 
 function Education ({ education, deleteEducation }) {
-    const formatDate = (startDate, endDate) => {
-        const start = dayjs(startDate)
-        const end = dayjs(endDate)
-        
-
-        let years = end.diff(start, 'year')
-        let remainingDate = start.add(years, 'year')
-        if(start.add(years, 'year').isAfter(end)){
-            years--
-            remainingDate = start.add(years, 'year')
-        }
-
-        let months = end.diff(remainingDate, 'month')
-        let remainingDateAfterMonths = remainingDate.add(months, 'month')
-        if(start.add(months, 'month').isAfter(end)){
-            months--
-            remainingDateAfterMonths = remainingDate.add(months, 'month')
-        }
-
-        const days = end.diff(remainingDateAfterMonths, 'day')
-        return { years, months, days }
-    }
-
     const educations = education.map(edu => (
         <tr key = {edu._id}>
             <td>{edu.school}</td>
             <td className='hide-sm'>{edu.degree}</td>
             <td className='hide-sm'>
-                {formatDate(dayjs(edu.from), (!edu.to ? dayjs() : dayjs(edu.to))).years} years, {formatDate(dayjs(edu.from), (!edu.to ? dayjs() : dayjs(edu.to))).months} months, {formatDate(dayjs(edu.from), (!edu.to ? dayjs() : dayjs(edu.to))).days} days
+                {dayjs(edu.from).format('MM/DD/YYYY')} - {edu.to ? dayjs(edu.to).format('MM/DD/YYYY') : <>Present</>}
             </td>
             <td>
                 <button className = 'btn btn-danger' onClick = {() => deleteEducation(edu._id)}>Delete</button>
