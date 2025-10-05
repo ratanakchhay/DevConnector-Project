@@ -10,6 +10,8 @@ import CreateProfile from './components/profile-form/CreateProfile'
 import EditProfile from './components/profile-form/EditProfile'
 import AddExperience from './components/profile-form/AddExperience'
 import AddEducation from './components/profile-form/AddEducation'
+import Profiles from './components/profiles/Profiles'
+import Profile from './components/profile/Profile'
 
 // Redux imports
 import { Provider } from 'react-redux'
@@ -35,6 +37,8 @@ function App() {
               <Route path = "/" element = {<Landing />} />
               <Route path = "/login" element = {<section className = 'container'><Alert /><Login /></section>} />
               <Route path = "/register" element = {<section className = 'container'><Alert /><Register /></section>} />
+              <Route path = "/profiles" element = {<section className = 'container'><Profiles /></section>} />
+              <Route path = '/profile/:id' element = {<section className = 'container'><Profile /></section>}/>
               <Route path = '/dashboard' element = {<section className='container'><Dashboard /></section>} />
               <Route path = "/create-profile" element = {<section className='container'><Alert /><CreateProfile /></section>} />
               <Route path = "/edit-profile" element = {<section className='container'><Alert /><EditProfile /></section>} />

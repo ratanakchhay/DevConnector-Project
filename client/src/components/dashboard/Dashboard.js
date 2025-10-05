@@ -11,7 +11,7 @@ import Education from './Education'
 function Dashboard ({ isAuthenticated, loading, getCurrentProfile, profile, auth, deleteAccount }) {
     React.useEffect(() => {
         getCurrentProfile()
-    }, [])
+    }, [getCurrentProfile])
 
     if (!isAuthenticated && !loading) {
         return <Navigate to = '/login' />

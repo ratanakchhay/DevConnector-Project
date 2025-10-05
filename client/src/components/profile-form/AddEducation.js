@@ -28,8 +28,6 @@ function AddEducation ({ addEducation, error }) {
         const to = form.get('to') || ""
         const description = form.get('description') || ""
 
-        console.log({ school, degree, fieldofstudy, from, to, current, description })
-
         setFormData({ school, degree, fieldofstudy, from, to, current, description })
         addEducation({ school, degree, fieldofstudy, from, to, current, description })
         

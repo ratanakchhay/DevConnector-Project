@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { createProfile } from '../../actions/profile'
 
 function CreateProfile ({ createProfile, error }) {
@@ -42,7 +41,7 @@ function CreateProfile ({ createProfile, error }) {
         setFormData({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram })
         createProfile({ company, website, location, status, skills, bio, githubusername, youtube, twitter, facebook, linkedin, instagram })
         
-        if (!error) {
+        if (error != {}) {
             navigate(-1)
         }
     }
