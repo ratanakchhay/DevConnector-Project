@@ -176,7 +176,7 @@ router.post('/comment/:id',
         }
         
         try {
-            const user = await Post.findById(req.user.id)
+            const user = await User.findById(req.user.id).select('-password')
             const post = await Post.findById(req.params.id)
 
             const newComment = {
@@ -202,24 +202,24 @@ router.post('/comment/:id',
 // @access   Private
 router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
     try {
-        const post = await Post.findOneById(req.params.id)
+        const post = await Post.findById(req.params.id)
 
         // Pull out comment and check whether comment exists
         const comment = post.comments.find(comment => comment.id === req.params.comment_id)
         if (!comment) {
-            res.status(404).json({ msg: "Comment does not exist" })
+            return res.status(404).json({ msg: "Comment does not exist" })
         }
 
         // Check user
         if (comment.user.toString() !== req.user.id) {
-            res.status(401).json({ msg: "User not authorized" })
+            return res.status(401).json({ msg: "User not authorized" })
         }
         
         // Get remove index
-        const removeIndex = post.comments.map(comment => comment.user.toString()).indexOf(req.user.id)
+        const removeIndex = post.comments.map(comment => comment.id).indexOf(req.params.comment_id)
         post.comments.splice(removeIndex, 1)
         
-        await post.comments.save()
+        await post.save()
         res.json(post.comments)
     } catch (err) {
         console.error(err.message)
