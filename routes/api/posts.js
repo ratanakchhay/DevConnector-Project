@@ -76,7 +76,7 @@ router.get('/:id', auth, async (req, res) => {
 // @route    DELETE api/posts/:id
 // @desc     Delete post by ID
 // @access   Private
-router.get('/:id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
 
@@ -89,7 +89,7 @@ router.get('/:id', auth, async (req, res) => {
         if (post.user.toString() != req.user.id) {
             return res.status(401).json({ msg: "User not authorized "})
         } else {
-            await post.remove()
+            await post.save()
             res.json({ msg: "Post Removed" })
         }
      
