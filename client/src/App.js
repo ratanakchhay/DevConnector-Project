@@ -14,6 +14,7 @@ import Profiles from './components/profiles/Profiles'
 import Profile from './components/profile/Profile'
 import Posts from './components/posts/Posts'
 import Post from './components/post/Post'
+import NotFound from './components/not-found/NotFound'
 
 // Redux imports
 import { Provider } from 'react-redux'
@@ -49,6 +50,7 @@ function App() {
                 <Route path = "/add-education" element = {<section className='container'><Alert /><AddEducation /></section>} />
                 <Route path = '/posts' element = {<section className='container'><Alert /><Posts /></section>}/>
                 <Route path = '/posts/:id' element = {<section className='container'><Alert /><Post /></section>} />
+                <Route path = "*" element = {<section className='container'><NotFound /></section>} />
               </Routes>
         </BrowserRouter>
       </Provider>
